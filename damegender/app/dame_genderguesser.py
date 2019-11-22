@@ -25,7 +25,7 @@ import csv
 import requests
 import json
 import gender_guesser.detector as gender
-from app.dame_gender import Gender
+from damegender.app.dame_gender import Gender
 
 
 class DameGenderGuesser(Gender):

@@ -40,7 +40,7 @@ from sklearn import svm
 from sklearn.metrics import accuracy_score
 from sklearn.metrics import confusion_matrix
 import pickle
-from app.dame_gender import Gender
+from damegender.app.dame_gender import Gender
 
 
 class DameSexmachine(Gender):

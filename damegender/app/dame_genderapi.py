@@ -24,9 +24,8 @@
 import csv
 import requests
 import json
-from app.dame_gender import Gender
-from app.dame_utils import DameUtils
-
+from damegender.app.dame_gender import Gender
+from damegender.app.dame_utils import DameUtils
 
 class DameGenderApi(Gender):
 
@@ -104,7 +103,7 @@ class DameGenderApi(Gender):
         jsondata = open(jsonf).read()
         json_object = json.loads(jsondata)
         guesslist = []
-        for i in json_object["names"][0]:
+        for i in json_object["names"]:
             if binary:
                 if (i['gender'] == 'female'):
                     guesslist.append(0)

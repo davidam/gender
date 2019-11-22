@@ -23,12 +23,12 @@
 
 # This class is used to operations between all methods/apis
 
-from app.dame_gender import Gender
-from app.dame_sexmachine import DameSexmachine
-from app.dame_genderize import DameGenderize
-from app.dame_genderapi import DameGenderApi
-from app.dame_namsor import DameNamsor
-from app.dame_genderguesser import DameGenderGuesser
+from damegender.app.dame_gender import Gender
+from damegender.app.dame_sexmachine import DameSexmachine
+from damegender.app.dame_genderize import DameGenderize
+from damegender.app.dame_genderapi import DameGenderApi
+from damegender.app.dame_namsor import DameNamsor
+from damegender.app.dame_genderguesser import DameGenderGuesser
 
 
 class DameAll(Gender):

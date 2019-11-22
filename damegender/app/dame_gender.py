@@ -36,7 +36,8 @@ from collections import OrderedDict
 from sklearn.metrics import accuracy_score
 from sklearn.metrics import confusion_matrix
 from sklearn.decomposition import PCA
-from app.dame_utils import DameUtils
+from damegender.app.dame_utils import DameUtils
+
 
 csv.field_size_limit(3000000)
 
@@ -50,6 +51,7 @@ class Gender(object):
         self.males = 0
         self.females = 0
         self.unknown = 0
+        self.curr_path = os.path.abspath(os.path.dirname(__file__))
 
     def in_dict(self, name):
         f = os.popen('dict '+name)
@@ -126,7 +128,7 @@ class Gender(object):
         total = 0
         for i in range(1880, 2018):
             # first we acquire the total of births from 1880 to 2017
-            dataset = "files/names/uk/yob" + str(i) + ".txt"
+            dataset = self.curr_path + "/files/names/uk/yob" + str(i) + ".txt"
             with open(dataset) as csvfile:
                 sexreader = csv.reader(csvfile, delimiter=',', quotechar='|')
                 next(sexreader, None)
@@ -137,9 +139,9 @@ class Gender(object):
             total = total + totali
 
         # now we are going to start the json file with 1880
-        jsonuk = "files/names/uk/jsonuk.json"
+        jsonuk = self.curr_path + "/files/names/uk/jsonuk.json"
         file = open(jsonuk, "w")
-        dataset = "files/names/uk/yob1880.txt"
+        dataset = self.curr_path + "/files/names/uk/yob1880.txt"
         with open(dataset) as csvfile:
             sexreader1 = csv.reader(csvfile, delimiter=',', quotechar='|')
             next(sexreader1, None)
@@ -172,7 +174,7 @@ class Gender(object):
         fo.writelines(lines)
         # Cerramos el archivo
         for i in range(1881, 2018):
-            dataset = "files/names/uk/yob" + str(i) + ".txt"
+            dataset = self.curr_path + "/files/names/uk/yob" + str(i) + ".txt"
             with open(dataset) as csvfile:
                 sexreader = csv.reader(csvfile, delimiter=',', quotechar='|')
                 next(sexreader, None)
@@ -184,7 +186,7 @@ class Gender(object):
         return 1
 
     def males_list(self, corpus='engspa'):
-        path = 'files/names/names_es'
+        path = self.curr_path + '/files/names/names_es'
         my_corpus = nltk.corpus.PlaintextCorpusReader(path, '.*\.txt')
         if (corpus == 'eng'):
             m = names.words('male.txt')
@@ -196,7 +198,7 @@ class Gender(object):
         return m
 
     def females_list(self, corpus='engspa'):
-        path = 'files/names/names_es'
+        path = self.curr_path + '/files/names/names_es'
         my_corpus = nltk.corpus.PlaintextCorpusReader(path, '.*\.txt')
         if (corpus == 'eng'):
             f = names.words('female.txt')

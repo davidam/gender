@@ -23,7 +23,7 @@
 
 import pprint
 from googleapiclient.discovery import build
-from app.dame_gender import Gender
+from damegender.app.dame_gender import Gender
 
 
 class DameCustomsearch(Gender):

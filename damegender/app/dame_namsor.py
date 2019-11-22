@@ -26,7 +26,7 @@ import requests
 import json
 import numpy as np
 
-from app.dame_gender import Gender
+from damegender.app.dame_gender import Gender
 
 
 class DameNamsor(Gender):
